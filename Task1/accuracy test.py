@@ -8,12 +8,14 @@ def compute_metrics(classifier,dataset):
     test = dataset
     right=0
     wrong=0
+    iter=0
     for i in range(len(test)):
 
-        print(i)
+        iter+=1
         # parsing through entire dataset in this way will be too long
-        if(i>100):
-            return right / (right + wrong)
+        if(iter>200):
+            print( right / (right + wrong))
+            iter=0
         res=classifier(datasets["test"]["tokens"][i])
 
         for j in range(len(res)):
